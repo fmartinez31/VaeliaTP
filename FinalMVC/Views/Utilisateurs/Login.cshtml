@@ -1,0 +1,81 @@
+﻿@model FinalMVC.ViewsModels.IdentificationViewModel
+@{
+    ViewBag.Title = "Identification";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8" />
+    <script src="http://localhost:2416/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="http://localhost:2416/Scripts/jquery.dataTables.min.js"></script>
+    <script src="http://localhost:2416/Scripts/bootstrap.min.js"></script>
+    <link href="http://localhost:2416/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="http://localhost:2416/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <style>
+        body {
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background-color: #eee;
+        }
+
+        .form-signin {
+            max-width: 330px;
+            padding: 15px;
+            margin: 0 auto;
+        }
+
+            .form-signin .form-signin-heading,
+            .form-signin .checkbox {
+                margin-bottom: 10px;
+            }
+
+            .form-signin .checkbox {
+                font-weight: normal;
+            }
+
+            .form-signin .form-control {
+                position: relative;
+                height: auto;
+                -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+                padding: 10px;
+                font-size: 16px;
+            }
+
+                .form-signin .form-control:focus {
+                    z-index: 2;
+                }
+
+            .form-signin input[type="email"] {
+                margin-bottom: -1px;
+                border-bottom-right-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+
+            .form-signin input[type="password"] {
+                margin-bottom: 10px;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+            }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form class="form-signin" role="form" id="fomulaireIdentification" action="/Utilisateurs/Login" method="post">
+            <h2 class="form-signin-heading">@ViewBag.Title</h2>
+            <label for="text" class="sr-only">Utilisateur</label>
+            <input type="text" class="form-control" id="utilisateur" name="code" placeholder="Identifiant" required>
+            <label for="text" class="sr-only">Mot de passe</label>
+            <input type="password" class="form-control" id="motdepasse" name="mdp" placeholder="Mot de passe" required>
+            <input type="submit" class="btn btn-lg btn-primary btn-block" value="Connexion" />
+            <a href="/Utilisateurs/CreationCompte">Création de compte</a>
+            <span>@ViewBag.Message</span>
+        </form>
+    </div> <!-- /container -->
+</body>
+</html>
+
+

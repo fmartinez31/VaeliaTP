@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TPDataBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Classes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Libelle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Annee" Type="Int32" />
+    <NavigationProperty Name="Etudiants" Relationship="Self.ClassesEtudiants" FromRole="Classes" ToRole="Etudiants" />
+  </EntityType>
+  <EntityType Name="Cours">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Libelle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="EtudiantsCours" Relationship="Self.FK_EtudiantsCours_Cours" FromRole="Cours" ToRole="EtudiantsCours" />
+    <NavigationProperty Name="ExamensCoursEtudiants" Relationship="Self.FK_ExamensCoursEtudiants_Cours" FromRole="Cours" ToRole="ExamensCoursEtudiants" />
+    <NavigationProperty Name="Professeurs" Relationship="Self.ProfesseursCours" FromRole="Cours" ToRole="Professeurs" />
+  </EntityType>
+  <EntityType Name="Etudiants">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DateNaissance" Type="DateTime" Precision="3" />
+    <Property Name="Moyenne" Type="Int32" />
+    <Property Name="Present" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="HeureDeRevision" Type="Int32" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="EtudiantsCours" Relationship="Self.FK_EtudiantsCours_Etudiants" FromRole="Etudiants" ToRole="EtudiantsCours" />
+    <NavigationProperty Name="ExamensCoursEtudiants" Relationship="Self.FK_ExamensCoursEtudiants_Etudiants" FromRole="Etudiants" ToRole="ExamensCoursEtudiants" />
+    <NavigationProperty Name="Utilisateurs" Relationship="Self.FK_Utilisateurs_Etudiants" FromRole="Etudiants" ToRole="Utilisateurs" />
+    <NavigationProperty Name="Classes" Relationship="Self.ClassesEtudiants" FromRole="Etudiants" ToRole="Classes" />
+  </EntityType>
+  <EntityType Name="EtudiantsCours">
+    <Key>
+      <PropertyRef Name="FK_Etudiants" />
+      <PropertyRef Name="FK_Cours" />
+    </Key>
+    <Property Name="FK_Etudiants" Type="Int32" Nullable="false" />
+    <Property Name="FK_Cours" Type="Int32" Nullable="false" />
+    <Property Name="Trimestre" Type="Int32" />
+    <Property Name="Note" Type="Int32" />
+    <Property Name="HeureRevision" Type="Int32" />
+    <NavigationProperty Name="Cours" Relationship="Self.FK_EtudiantsCours_Cours" FromRole="EtudiantsCours" ToRole="Cours" />
+    <NavigationProperty Name="Etudiants" Relationship="Self.FK_EtudiantsCours_Etudiants" FromRole="EtudiantsCours" ToRole="Etudiants" />
+  </EntityType>
+  <EntityType Name="Examens">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Libelle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ExamensCoursEtudiants" Relationship="Self.FK_ExamensCoursEtudiants_Examens" FromRole="Examens" ToRole="ExamensCoursEtudiants" />
+  </EntityType>
+  <EntityType Name="ExamensCoursEtudiants">
+    <Key>
+      <PropertyRef Name="FK_Examens" />
+      <PropertyRef Name="FK_Cours" />
+      <PropertyRef Name="FK_Etudiants" />
+    </Key>
+    <Property Name="FK_Examens" Type="Int32" Nullable="false" />
+    <Property Name="FK_Cours" Type="Int32" Nullable="false" />
+    <Property Name="FK_Etudiants" Type="Int32" Nullable="false" />
+    <Property Name="Note" Type="Int32" />
+    <NavigationProperty Name="Cours" Relationship="Self.FK_ExamensCoursEtudiants_Cours" FromRole="ExamensCoursEtudiants" ToRole="Cours" />
+    <NavigationProperty Name="Etudiants" Relationship="Self.FK_ExamensCoursEtudiants_Etudiants" FromRole="ExamensCoursEtudiants" ToRole="Etudiants" />
+    <NavigationProperty Name="Examens" Relationship="Self.FK_ExamensCoursEtudiants_Examens" FromRole="ExamensCoursEtudiants" ToRole="Examens" />
+  </EntityType>
+  <EntityType Name="Professeurs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Specialite" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Utilisateurs" Relationship="Self.FK_Utilisateurs_Professeurs" FromRole="Professeurs" ToRole="Utilisateurs" />
+    <NavigationProperty Name="Cours" Relationship="Self.ProfesseursCours" FromRole="Professeurs" ToRole="Cours" />
+  </EntityType>
+  <EntityType Name="Utilisateurs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MotDePasse" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Profil" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Etat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FK_Professeurs" Type="Int32" />
+    <Property Name="FK_Etudiants" Type="Int32" />
+    <NavigationProperty Name="Etudiants" Relationship="Self.FK_Utilisateurs_Etudiants" FromRole="Utilisateurs" ToRole="Etudiants" />
+    <NavigationProperty Name="Professeurs" Relationship="Self.FK_Utilisateurs_Professeurs" FromRole="Utilisateurs" ToRole="Professeurs" />
+  </EntityType>
+  <Association Name="FK_EtudiantsCours_Cours">
+    <End Role="Cours" Type="Self.Cours" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="EtudiantsCours" Type="Self.EtudiantsCours" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cours">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EtudiantsCours">
+        <PropertyRef Name="FK_Cours" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExamensCoursEtudiants_Cours">
+    <End Role="Cours" Type="Self.Cours" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ExamensCoursEtudiants" Type="Self.ExamensCoursEtudiants" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cours">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ExamensCoursEtudiants">
+        <PropertyRef Name="FK_Cours" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EtudiantsCours_Etudiants">
+    <End Role="Etudiants" Type="Self.Etudiants" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="EtudiantsCours" Type="Self.EtudiantsCours" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Etudiants">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EtudiantsCours">
+        <PropertyRef Name="FK_Etudiants" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExamensCoursEtudiants_Etudiants">
+    <End Role="Etudiants" Type="Self.Etudiants" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ExamensCoursEtudiants" Type="Self.ExamensCoursEtudiants" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Etudiants">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ExamensCoursEtudiants">
+        <PropertyRef Name="FK_Etudiants" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Utilisateurs_Etudiants">
+    <End Role="Etudiants" Type="Self.Etudiants" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Utilisateurs" Type="Self.Utilisateurs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Etudiants">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Utilisateurs">
+        <PropertyRef Name="FK_Etudiants" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExamensCoursEtudiants_Examens">
+    <End Role="Examens" Type="Self.Examens" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ExamensCoursEtudiants" Type="Self.ExamensCoursEtudiants" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Examens">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ExamensCoursEtudiants">
+        <PropertyRef Name="FK_Examens" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Utilisateurs_Professeurs">
+    <End Role="Professeurs" Type="Self.Professeurs" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Utilisateurs" Type="Self.Utilisateurs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Professeurs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Utilisateurs">
+        <PropertyRef Name="FK_Professeurs" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClassesEtudiants">
+    <End Role="Classes" Type="Self.Classes" Multiplicity="*" />
+    <End Role="Etudiants" Type="Self.Etudiants" Multiplicity="*" />
+  </Association>
+  <Association Name="ProfesseursCours">
+    <End Role="Cours" Type="Self.Cours" Multiplicity="*" />
+    <End Role="Professeurs" Type="Self.Professeurs" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="TPDataBaseEntities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Classes" EntityType="Self.Classes" />
+    <EntitySet Name="Cours" EntityType="Self.Cours" />
+    <EntitySet Name="Etudiants" EntityType="Self.Etudiants" />
+    <EntitySet Name="EtudiantsCours" EntityType="Self.EtudiantsCours" />
+    <EntitySet Name="Examens" EntityType="Self.Examens" />
+    <EntitySet Name="ExamensCoursEtudiants" EntityType="Self.ExamensCoursEtudiants" />
+    <EntitySet Name="Professeurs" EntityType="Self.Professeurs" />
+    <EntitySet Name="Utilisateurs" EntityType="Self.Utilisateurs" />
+    <AssociationSet Name="FK_EtudiantsCours_Cours" Association="Self.FK_EtudiantsCours_Cours">
+      <End Role="Cours" EntitySet="Cours" />
+      <End Role="EtudiantsCours" EntitySet="EtudiantsCours" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExamensCoursEtudiants_Cours" Association="Self.FK_ExamensCoursEtudiants_Cours">
+      <End Role="Cours" EntitySet="Cours" />
+      <End Role="ExamensCoursEtudiants" EntitySet="ExamensCoursEtudiants" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EtudiantsCours_Etudiants" Association="Self.FK_EtudiantsCours_Etudiants">
+      <End Role="Etudiants" EntitySet="Etudiants" />
+      <End Role="EtudiantsCours" EntitySet="EtudiantsCours" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExamensCoursEtudiants_Etudiants" Association="Self.FK_ExamensCoursEtudiants_Etudiants">
+      <End Role="Etudiants" EntitySet="Etudiants" />
+      <End Role="ExamensCoursEtudiants" EntitySet="ExamensCoursEtudiants" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Utilisateurs_Etudiants" Association="Self.FK_Utilisateurs_Etudiants">
+      <End Role="Etudiants" EntitySet="Etudiants" />
+      <End Role="Utilisateurs" EntitySet="Utilisateurs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExamensCoursEtudiants_Examens" Association="Self.FK_ExamensCoursEtudiants_Examens">
+      <End Role="Examens" EntitySet="Examens" />
+      <End Role="ExamensCoursEtudiants" EntitySet="ExamensCoursEtudiants" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Utilisateurs_Professeurs" Association="Self.FK_Utilisateurs_Professeurs">
+      <End Role="Professeurs" EntitySet="Professeurs" />
+      <End Role="Utilisateurs" EntitySet="Utilisateurs" />
+    </AssociationSet>
+    <AssociationSet Name="ClassesEtudiants" Association="Self.ClassesEtudiants">
+      <End Role="Classes" EntitySet="Classes" />
+      <End Role="Etudiants" EntitySet="Etudiants" />
+    </AssociationSet>
+    <AssociationSet Name="ProfesseursCours" Association="Self.ProfesseursCours">
+      <End Role="Cours" EntitySet="Cours" />
+      <End Role="Professeurs" EntitySet="Professeurs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

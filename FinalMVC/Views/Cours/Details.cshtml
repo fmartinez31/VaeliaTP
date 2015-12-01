@@ -1,0 +1,27 @@
+﻿@model Etudiant.Data.Cours
+
+@{
+    ViewBag.Title = "Consultation d'un cours";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <h4>Cours</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Libelle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Libelle)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Modifier", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Retour sur la liste", "Index")
+</p>

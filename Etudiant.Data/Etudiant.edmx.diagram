@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d4664a83624f4e67926f1cd1a8e2476b" Name="Diagram1">
+        <EntityTypeShape EntityType="TPDataBaseModel.Classes" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TPDataBaseModel.Cours" Width="1.5" PointX="6.125" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TPDataBaseModel.Etudiants" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TPDataBaseModel.EtudiantsCours" Width="1.5" PointX="5.375" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TPDataBaseModel.Examens" Width="1.5" PointX="7.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TPDataBaseModel.ExamensCoursEtudiants" Width="1.5" PointX="7.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TPDataBaseModel.Professeurs" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TPDataBaseModel.Utilisateurs" Width="1.5" PointX="0.5" PointY="2.125" IsExpanded="true" />
+        <AssociationConnector Association="TPDataBaseModel.FK_EtudiantsCours_Cours" ManuallyRouted="false" />
+        <AssociationConnector Association="TPDataBaseModel.FK_ExamensCoursEtudiants_Cours" ManuallyRouted="false" />
+        <AssociationConnector Association="TPDataBaseModel.FK_EtudiantsCours_Etudiants" ManuallyRouted="false" />
+        <AssociationConnector Association="TPDataBaseModel.FK_ExamensCoursEtudiants_Etudiants" ManuallyRouted="false" />
+        <AssociationConnector Association="TPDataBaseModel.FK_Utilisateurs_Etudiants" ManuallyRouted="false" />
+        <AssociationConnector Association="TPDataBaseModel.FK_ExamensCoursEtudiants_Examens" ManuallyRouted="false" />
+        <AssociationConnector Association="TPDataBaseModel.FK_Utilisateurs_Professeurs" ManuallyRouted="false" />
+        <AssociationConnector Association="TPDataBaseModel.ClassesEtudiants" ManuallyRouted="false" />
+        <AssociationConnector Association="TPDataBaseModel.ProfesseursCours" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,105 @@
+﻿@model Etudiant.Data.Utilisateurs
+
+@{
+    ViewBag.Title = "Création d'un utilisateur";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Utilisateurs</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Code, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MotDePasse, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MotDePasse, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MotDePasse, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Mail, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        @if (ViewBag.Mode == null)
+        {
+        <div class="form-group">
+            @Html.LabelFor(model => model.Profil, "Profil", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Profil", null, htmlAttributes: new { @class = "form-control" })
+                @*@Html.EditorFor(model => model.Profil, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.ValidationMessageFor(model => model.Profil, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Etat, "Etat", htmlAttributes: new { @class = "control -label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Etat", null, htmlAttributes: new { @class = "form-control" })
+                @*@Html.EditorFor(model => model.Etat, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.ValidationMessageFor(model => model.Etat, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.FK_Professeurs, "FK_Professeurs", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("FK_Professeurs", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.FK_Professeurs, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FK_Etudiants, "FK_Etudiants", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("FK_Etudiants", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.FK_Etudiants, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        } else if (ViewBag.Mode == "CREATION_COMPTE")
+        {
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Profil, new { htmlAttributes = new { @style = "display:none" } })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Etat, new { htmlAttributes = new { @style = "display:none" } })
+            </div>
+        </div>
+        }
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Créer" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+@if (ViewBag.Mode == null)
+{
+    <div>
+        @Html.ActionLink("Retour sur la liste", "Index")
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

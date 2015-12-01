@@ -1,0 +1,33 @@
+﻿@model Etudiant.Data.Cours
+
+@{
+    ViewBag.Title = "Suppression d'un cours";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<h3>Etes-vous certain de vouloir supprimer ce cours ?</h3>
+<div>
+    <h4>Cours</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Libelle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Libelle)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Supprimer" class="btn btn-default" /> |
+            @Html.ActionLink("Retour sur la liste", "Index")
+        </div>
+    }
+</div>

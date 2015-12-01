@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script src="http://localhost:1264/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="http://localhost:1264/Scripts/jquery.dataTables.min.js"></script>
+    <script src="http://localhost:1264/Scripts/bootstrap.min.js"></script>
+    <script src="http://localhost:1264/Scripts/bootbox.min.js"></script>
+    <script src="http://localhost:1264/Scripts/jsrender.js"></script>
+    <script src="http://localhost:1264/Scripts/Chart.min.js"></script>
+    <link href="http://localhost:1264/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="http://localhost:1264/css/grid.css" rel="stylesheet">
+    <link href="http://localhost:1264/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <script src="http://localhost:1264/Scripts/Etudiant.js"></script>
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Fichier<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Nouveau</a></li>
+                            <li><a href="#">Ouvrir</a></li>
+                            <li><a href="#">Supprimer</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Quitter</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Editer<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a onclick="InitialiserEtudiant();">Etudiants</a></li>
+                            <li><a onclick="InitialiserProfesseur();">Professeurs</a></li>
+                            <li><a onclick="AfficherStatistiques();">Statistiques</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Examens</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Aide<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a onclick="APropos();">A propos de...</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav> <!-- MENU : Fin -->
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

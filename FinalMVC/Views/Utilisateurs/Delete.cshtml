@@ -1,0 +1,81 @@
+﻿@model Etudiant.Data.Utilisateurs
+
+@{
+    ViewBag.Title = "Suppression d'un utilisateur";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<h3>Etes-vous certain de vouloir supprimer cet utilisateur ?</h3>
+<div>
+    <h4>Utilisateurs</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MotDePasse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MotDePasse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Profil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Profil)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Etat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Etat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Etudiants.Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Etudiants.Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Professeurs.Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Professeurs.Nom)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Supprimer" class="btn btn-default" /> |
+            @Html.ActionLink("Retour sur la liste", "Index")
+        </div>
+    }
+</div>

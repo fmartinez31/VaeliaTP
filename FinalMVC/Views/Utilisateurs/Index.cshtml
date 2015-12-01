@@ -1,0 +1,145 @@
+﻿@model IEnumerable<Etudiant.Data.Utilisateurs>
+
+@{
+    ViewBag.Title = "Liste des utilisateurs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Nouveau", "Create")
+</p>
+@*<table class="table">
+    <tr>
+        <th>
+            Actions
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MotDePasse)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Profil)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Etat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Etudiants.Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Professeurs.Nom)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink(" ", "Edit", new { id = item.Id }, new { @class = "glyphicon glyphicon-pencil", @title = "Modifier" }) |
+            @Html.ActionLink(" ", "Details", new { id = item.Id }, new { @class = "glyphicon glyphicon-list-alt", @title = "Consulter" }) |
+            @Html.ActionLink(" ", "Delete", new { id = item.Id }, new { @class = "glyphicon glyphicon-trash", @title = "Supprimer" })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelitem => item.MotDePasse)
+        </td>
+        <td>
+            @Html.DisplayFor(modelitem => item.Mail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Profil)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Etat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Etudiants.Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Professeurs.Nom)
+        </td>
+    </tr>
+}
+</table>*@
+
+<table id="listeutilisateurs" class="display" cellspacing="0">
+    <thead>
+        <tr>
+            <th>
+                Actions
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Code)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.MotDePasse)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mail)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Profil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Etat)
+            </th>
+            <th>
+                Etudiant
+            </th>
+            <th>
+                Professeur
+            </th>        
+        </tr>
+    </thead>
+    <tfoot>
+    </tfoot>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(" ", "Edit", new { id = item.Id }, new { @class = "glyphicon glyphicon-pencil", @title = "Modifier" }) |
+                    @Html.ActionLink(" ", "Details", new { id = item.Id }, new { @class = "glyphicon glyphicon-list-alt", @title = "Consulter" }) |
+                    @Html.ActionLink(" ", "Delete", new { id = item.Id }, new { @class = "glyphicon glyphicon-trash", @title = "Supprimer" })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelitem => item.MotDePasse)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelitem => item.Mail)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Profil)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Etat)
+                </td>
+                <td>
+                    @if (item.Etudiants!=null)
+                    {
+                        @Html.ActionLink(item.Etudiants.Nom, "Edit", "Etudiants", new { id = item.Etudiants.Id }, new { @title = "Modifier" })
+                        @*@Html.DisplayFor(modelItem => item.Etudiants.Nom)*@
+                    }
+                </td>
+                <td>
+                    @if (item.Professeurs != null)
+                    {
+                        @Html.ActionLink(item.Professeurs.Nom, "Edit", "Professeurs", new { id = item.Professeurs.Id }, new {@title = "Modifier" })
+                        @*@Html.DisplayFor(modelItem => item.Professeurs.Nom)*@
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

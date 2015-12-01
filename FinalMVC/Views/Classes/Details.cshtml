@@ -1,0 +1,35 @@
+﻿@model Etudiant.Data.Classes
+
+@{
+    ViewBag.Title = "Consultation d'une classe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <h4>Classe</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Libelle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Libelle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Annee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Annee)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Modifier", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Retour sur la liste", "Index")
+</p>

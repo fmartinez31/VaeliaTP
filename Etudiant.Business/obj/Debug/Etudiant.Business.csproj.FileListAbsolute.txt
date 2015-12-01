@@ -1,0 +1,12 @@
+C:\Users\Admin\Documents\VaeliaTP_SourcesTFS\VaeliaTP\VaeliaTPSolution\Etudiant.Business\bin\Debug\Etudiant.Business.dll
+C:\Users\Admin\Documents\VaeliaTP_SourcesTFS\VaeliaTP\VaeliaTPSolution\Etudiant.Business\bin\Debug\Etudiant.Business.pdb
+C:\Users\Admin\Documents\VaeliaTP_SourcesTFS\VaeliaTP\VaeliaTPSolution\Etudiant.Business\bin\Debug\Etudiant.Data.dll
+C:\Users\Admin\Documents\VaeliaTP_SourcesTFS\VaeliaTP\VaeliaTPSolution\Etudiant.Business\bin\Debug\EntityFramework.dll
+C:\Users\Admin\Documents\VaeliaTP_SourcesTFS\VaeliaTP\VaeliaTPSolution\Etudiant.Business\bin\Debug\Etudiant.Data.pdb
+C:\Users\Admin\Documents\VaeliaTP_SourcesTFS\VaeliaTP\VaeliaTPSolution\Etudiant.Business\bin\Debug\EntityFramework.xml
+C:\Users\Admin\Documents\VaeliaTP_SourcesTFS\VaeliaTP\VaeliaTPSolution\Etudiant.Business\obj\Debug\Etudiant.Business.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Documents\VaeliaTP_SourcesTFS\VaeliaTP\VaeliaTPSolution\Etudiant.Business\obj\Debug\Etudiant.Business.dll
+C:\Users\Admin\Documents\VaeliaTP_SourcesTFS\VaeliaTP\VaeliaTPSolution\Etudiant.Business\obj\Debug\Etudiant.Business.pdb
+C:\Users\Admin\Documents\VaeliaTP_SourcesTFS\VaeliaTP\VaeliaTPSolution\Etudiant.Business\bin\Debug\Etudiant.Business.dll.config
+C:\Users\Admin\Documents\VaeliaTP_SourcesTFS\VaeliaTP\VaeliaTPSolution\Etudiant.Business\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Admin\Documents\VaeliaTP_SourcesTFS\VaeliaTP\VaeliaTPSolution\Etudiant.Business\bin\Debug\EntityFramework.SqlServer.xml

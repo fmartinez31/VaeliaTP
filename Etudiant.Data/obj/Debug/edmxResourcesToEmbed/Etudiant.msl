@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TPDataBaseModelStoreContainer" CdmEntityContainer="TPDataBaseEntities2">
+    <EntitySetMapping Name="Classes">
+      <EntityTypeMapping TypeName="TPDataBaseModel.Classes">
+        <MappingFragment StoreEntitySet="Classes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Libelle" ColumnName="Libelle" />
+          <ScalarProperty Name="Annee" ColumnName="Annee" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cours">
+      <EntityTypeMapping TypeName="TPDataBaseModel.Cours">
+        <MappingFragment StoreEntitySet="Cours">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Libelle" ColumnName="Libelle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Etudiants">
+      <EntityTypeMapping TypeName="TPDataBaseModel.Etudiants">
+        <MappingFragment StoreEntitySet="Etudiants">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+          <ScalarProperty Name="DateNaissance" ColumnName="DateNaissance" />
+          <ScalarProperty Name="Moyenne" ColumnName="Moyenne" />
+          <ScalarProperty Name="Present" ColumnName="Present" />
+          <ScalarProperty Name="HeureDeRevision" ColumnName="HeureDeRevision" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EtudiantsCours">
+      <EntityTypeMapping TypeName="TPDataBaseModel.EtudiantsCours">
+        <MappingFragment StoreEntitySet="EtudiantsCours">
+          <ScalarProperty Name="FK_Etudiants" ColumnName="FK_Etudiants" />
+          <ScalarProperty Name="FK_Cours" ColumnName="FK_Cours" />
+          <ScalarProperty Name="Trimestre" ColumnName="Trimestre" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="HeureRevision" ColumnName="HeureRevision" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Examens">
+      <EntityTypeMapping TypeName="TPDataBaseModel.Examens">
+        <MappingFragment StoreEntitySet="Examens">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Libelle" ColumnName="Libelle" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExamensCoursEtudiants">
+      <EntityTypeMapping TypeName="TPDataBaseModel.ExamensCoursEtudiants">
+        <MappingFragment StoreEntitySet="ExamensCoursEtudiants">
+          <ScalarProperty Name="FK_Examens" ColumnName="FK_Examens" />
+          <ScalarProperty Name="FK_Cours" ColumnName="FK_Cours" />
+          <ScalarProperty Name="FK_Etudiants" ColumnName="FK_Etudiants" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Professeurs">
+      <EntityTypeMapping TypeName="TPDataBaseModel.Professeurs">
+        <MappingFragment StoreEntitySet="Professeurs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+          <ScalarProperty Name="Specialite" ColumnName="Specialite" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Utilisateurs">
+      <EntityTypeMapping TypeName="TPDataBaseModel.Utilisateurs">
+        <MappingFragment StoreEntitySet="Utilisateurs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="MotDePasse" ColumnName="MotDePasse" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="Profil" ColumnName="Profil" />
+          <ScalarProperty Name="Etat" ColumnName="Etat" />
+          <ScalarProperty Name="FK_Professeurs" ColumnName="FK_Professeurs" />
+          <ScalarProperty Name="FK_Etudiants" ColumnName="FK_Etudiants" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ClassesEtudiants" TypeName="TPDataBaseModel.ClassesEtudiants" StoreEntitySet="ClassesEtudiants">
+      <EndProperty Name="Classes">
+        <ScalarProperty Name="Id" ColumnName="FK_Classes" />
+      </EndProperty>
+      <EndProperty Name="Etudiants">
+        <ScalarProperty Name="Id" ColumnName="FK_Etudiants" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProfesseursCours" TypeName="TPDataBaseModel.ProfesseursCours" StoreEntitySet="ProfesseursCours">
+      <EndProperty Name="Cours">
+        <ScalarProperty Name="Id" ColumnName="FK_Cours" />
+      </EndProperty>
+      <EndProperty Name="Professeurs">
+        <ScalarProperty Name="Id" ColumnName="FK_Professeurs" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
